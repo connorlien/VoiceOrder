@@ -12,14 +12,18 @@ def get_menu():
             "large": float(menu_line[2]),
             "hot": float(menu_line[3])
         }
-        print(menu_line)
 
     return menu_dict
 
 def get_toppings():
-    return {
-        "boba": 0.25,
-        "lychee jelly": 0.50,
-        "aloe vera": 0.50,
-        "pudding": 0.50,
-    }
+    toppings_text = open("toppings.txt", "r")
+    toppings_list = [i[:-1] for i in toppings_text.readlines()]
+    toppings_text.close()
+
+    toppings_dict = {}
+
+    for line in toppings_list:
+        toppings_line = line.split("/",2)
+        toppings_dict[toppings_line[0].lower()] = float(toppings_line[1])
+
+    return toppings_dict
