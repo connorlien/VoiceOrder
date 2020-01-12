@@ -1,0 +1,32 @@
+Milk Black/3.25/4.00/3.50
+Jasmine Milk Green/3.25/4.00/3.50
+Roasted Oolong Milk/3.75/4.50/4.00
+Honey Milk Green/3.50/4.25/3.75
+Honey Milk Black/3.50/4.25/3.75
+Matcha Milk Green/3.75/4.50/4.00
+Mango Milk Green/3.50/4.25/-1.00
+Strawberry Milk Green/3.75/4.50/-1.00
+Taro Milk Green/3.50/4.25/3.75
+Almond Black Milk/3.50/4.25/3.75
+Coconut Green Milk/3.50/4.25/3.75
+Honeydew Milk Green/3.50/4.25/3.75
+Red Bean Milk Black/3.75/4.50/4.00
+Green Bean Milk Green/3.75/4.50/4.00
+Thai Milk/3.75/4.50/4.00
+Black/3.25/4.00/3.50
+Jasmine Green/3.25/4.00/3.50
+High Mountain Oolong/3.50/4.25/3.75
+Honey Lemon Green/3.50/4.25/3.75
+Lychee Green/3.50/4.25/3.75
+Peach Green/3.50/4.25/3.75
+Honey Green/3.50/4.25/3.75
+Passion Fruit Green/3.50/4.25/3.75
+Mango Green/3.50/4.25/3.75
+Strawberry Green/3.50/4.25/3.75
+Grapefruit Green/3.50/4.25/3.75
+Kumquat Green/3.50/4.25/3.75
+White Peach Green/3.50/4.25/3.75
+Lychee Yogurt Green/3.50/4.25/3.75
+Peach Yogurt Green/3.50/4.25/3.75
+Mango Yogurt Green/3.50/4.25/3.75
+Strawberry Yogurt Green/3.50/4.25/3.75
