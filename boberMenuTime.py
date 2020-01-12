@@ -16,6 +16,10 @@ def get_menu():
 
     return menu_dict
 
-
-test = get_menu()
-print(test["strawberry milk green"]["hot"])
+def get_toppings():
+    return {
+        "boba": 0.25,
+        "lychee jelly": 0.50,
+        "aloe vera": 0.50,
+        "pudding": 0.50,
+    }
