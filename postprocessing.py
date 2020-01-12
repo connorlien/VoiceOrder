@@ -1,7 +1,37 @@
 # written by Connor Lien for SBHacks
 
-from boberMenuTime import *
-import difflib
+from api_handler import *
+
+
+def get_menu():
+    menu_text = open("menu.txt", "r")
+    menu_list = [i[:-1] for i in menu_text.readlines()]
+    menu_text.close()
+
+    menu_dict = {}
+
+    for line in menu_list:
+        menu_line = line.split("/",4)
+        menu_dict[menu_line[0].lower()] = {
+            "regular": float(menu_line[1]),
+            "large": float(menu_line[2]),
+            "hot": float(menu_line[3])
+        }
+
+    return menu_dict
+
+def get_toppings():
+    toppings_text = open("toppings.txt", "r")
+    toppings_list = [i[:-1] for i in toppings_text.readlines()]
+    toppings_text.close()
+
+    toppings_dict = {}
+
+    for line in toppings_list:
+        toppings_line = line.split("/",2)
+        toppings_dict[toppings_line[0].lower()] = float(toppings_line[1])
+
+    return toppings_dict
 
 def reformat_order(order): # order is a dictionary in JSON form
 
@@ -25,14 +55,14 @@ def reformat_order(order): # order is a dictionary in JSON form
     for tag in tags:
         if tag["displayName"] == "topping":
             result["topping"].append(tag["textExtraction"]["textSegment"]["content"])
-        else:
+        elif tag["displayName"] != "additive_adjective":
             result[tag["displayName"]] = tag["textExtraction"]["textSegment"]["content"]
 
     # custom processing
     check_synonyms(result)
     if result["ice"] == "hundred":  result["ice"] = "one hundred"
     if result["sweetness"] == "hundred":  result["sweetness"] = "one hundred"
-    result["order_name"] = difflib.get_close_matches(result["order_name"], menu.keys(), 1, 0)[0]
+    result["order_name"] = find_closest_match(result["order_name"], menu.keys())
     result["ice"], result["sweetness"] = str(text2int(result["ice"])) + "%", str(text2int(result["sweetness"])) + "%"
     
     # calculate price
@@ -47,7 +77,7 @@ def reformat_order(order): # order is a dictionary in JSON form
 def calculate_price(order, menu, toppings_menu):
     drink_price = menu[order["order_name"]][order["drink_size"]] * order["amount_of_drinks"]
     toppings_price = sum([toppings_menu[i] for i in order["topping"]])
-    return drink_price + toppings_price
+    return round(drink_price + toppings_price, 2)
 
 # checks for synonyms amongst possible order and changes them, like pearls --> boba
 def check_synonyms(order):
@@ -85,7 +115,7 @@ def text2int(textnum, numwords={}):
             current = 0
 
     return result + current
-
+'''
 # a test JSON dictionary to run
 test = {
   "payload": [
@@ -133,7 +163,7 @@ test = {
         "textSegment": {
           "startOffset": "19",
           "endOffset": "29",
-          "content": "milk black"
+          "content": "black milk"
         }
       }
     },
@@ -169,7 +199,7 @@ test = {
         "textSegment": {
           "startOffset": "92",
           "endOffset": "96",
-          "content": "pearls"
+          "content": "housemade grass jelly"
         }
       }
     },
@@ -189,3 +219,4 @@ test = {
 }
 
 print(reformat_order(test))
+'''
