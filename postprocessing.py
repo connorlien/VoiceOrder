@@ -45,8 +45,8 @@ def reformat_order(order): # order is a dictionary in JSON form
         "order_name": "",
         "amount_of_drinks": 1,
         "drink_size": "regular",
-        "ice": "one hundred",
-        "sweetness": "one hundred",
+        "ice": "100",
+        "sweetness": "100",
         "topping": [],
         "price": 0.00
     }
@@ -60,10 +60,12 @@ def reformat_order(order): # order is a dictionary in JSON form
 
     # custom processing
     check_synonyms(result)
-    if result["ice"] == "hundred":  result["ice"] = "one hundred"
-    if result["sweetness"] == "hundred":  result["sweetness"] = "one hundred"
+    if result["ice"] == "hundred":  result["ice"] = "100"
+    if result["sweetness"] == "hundred":  result["sweetness"] = "100"
+    if result["ice"] == "no":  result["ice"] = "0"
+    if result["sweetness"] == "no":  result["sweetness"] = "0"
     result["order_name"] = find_closest_match(result["order_name"], menu.keys())
-    result["ice"], result["sweetness"] = str(text2int(result["ice"])) + "%", str(text2int(result["sweetness"])) + "%"
+    result["ice"], result["sweetness"] = str(result["ice"]) + "%", str(result["sweetness"]) + "%"
     
     # calculate price
     result["price"] = calculate_price(result, menu, toppings_menu)
@@ -115,7 +117,7 @@ def text2int(textnum, numwords={}):
             current = 0
 
     return result + current
-'''
+
 # a test JSON dictionary to run
 test = {
   "payload": [
@@ -175,7 +177,7 @@ test = {
         "textSegment": {
           "startOffset": "39",
           "endOffset": "44",
-          "content": "fifty"
+          "content": "25"
         }
       }
     },
@@ -187,7 +189,7 @@ test = {
         "textSegment": {
           "startOffset": "63",
           "endOffset": "74",
-          "content": "one hundred"
+          "content": "50"
         }
       }
     },
@@ -199,7 +201,7 @@ test = {
         "textSegment": {
           "startOffset": "92",
           "endOffset": "96",
-          "content": "housemade grass jelly"
+          "content": "boba"
         }
       }
     },
@@ -219,4 +221,3 @@ test = {
 }
 
 print(reformat_order(test))
-'''
