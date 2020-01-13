@@ -10,8 +10,10 @@ Amazon Alexa Skills Kit API:
 Utilized Amazon Alexa’s speech recognition software to take in input for further processing
 Leveraged AWS Lambda to run a server-side feedback loop written in Python
 Made use of the Alexa Developer Console to design custom intents and utterances
-Google Cloud AutoML API:
+
+Google Cloud AutoML Natural Language Processing API:
 Trained a custom machine learning model regarding our demo product to analyze user messages for order intent
+
 FireBase:
 Leveraged FireBase’s API to store orders detected by the AI on a local server
 Utilized React.js to display processed orders in real-time
