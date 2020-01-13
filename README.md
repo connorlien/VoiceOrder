@@ -1,4 +1,4 @@
-Voice Order
+Voice Order: SBHacks Project
 
 When it comes to cutting costs through automation, small businesses, drive-thru services, and restaurants run into the same problem: almost all orders require an employee to customer interaction.
 
